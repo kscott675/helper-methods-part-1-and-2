@@ -4,28 +4,19 @@
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<form action="<%= movie_path(@the_movie)%>" method="post" data-turbo="false">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  
-  <input name="_method" value="patch" type="hidden">
+<div>
+  <%= form_with(url: movie_path(@the_movie), method: :patch, data: { turbo: false }) do %>
+    <div>
+      <%= label_tag "Title"%>
+      <%= text_field_tag :query_title, @the_movie.title, {id: "title_box"} %>
+    </div>
 
-  <div>
-    <label for="title_box">
-      Title
-    </label>
+    <div>
+      <%= label_tag "Description" %>
 
-    <input type="text" id="title_box" name="query_title" value="<%= @the_movie.title %>">
-  </div>
+      <%= text_area_tag :query_description, @the_movie.description, {id: "description_box", rows: 3 } %>
+    </div>
 
-  <div>
-    <label for="description_box">
-      Description
-    </label>
-
-    <textarea id="description_box" name="query_description" rows="3"><%= @the_movie.description %></textarea>
-  </div>
-
-  <button>
-    Update Movie
-  </button>
-</form>
+    <%= button_tag "Update Movie" %>
+  <% end %>
+</div>
