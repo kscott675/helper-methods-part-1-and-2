@@ -1,11 +1,11 @@
 <h1>
-  List of all movies
+List of all movies
 </h1>
 
 <hr>
 
 <div>
-  <a href="/movies/new">Add a new movie</a>
+  <a href="<%= new_movie_path %>">Add a new movie</a>
 </div>
 
 <hr>
@@ -58,7 +58,7 @@
     </td>
 
     <td>
-      <a href="/movies/<%= a_movie.id %>">
+      <a href="<%= movie_path %>">
         Show details
       </a>
     </td>
